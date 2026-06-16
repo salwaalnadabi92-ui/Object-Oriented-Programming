@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.Design;
+using System.Runtime.ConstrainedExecution;
 using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace OOP_Part1
 {
@@ -24,36 +26,30 @@ namespace OOP_Part1
 
     class Guest
     {
-         public  string    guestId;
-         public string  guestName;
-         public  string   roomNumber;
-         public string  checkInDate;
-         public  int      totalNights;
+        public string guestId;
+        public string guestName;
+        public string roomNumber;
+        public string checkInDate;
+        public int totalNights;
+        public double pricePerNight;
 
-        public  void displayGuest()
+        public void displayGuest()
+
         {
-            
+
             Console.WriteLine(" ID :" + guestId);
             Console.WriteLine("name: " + guestName);
-            Console.WriteLine("  room number "+ roomNumber);
+            Console.WriteLine("  room number " + roomNumber);
             Console.WriteLine(" date" + checkInDate);
-            Console.WriteLine(" total Night" +totalNights );
+            Console.WriteLine(" total Night" + totalNights);
         }
 
-
-        //public static void calculateTotalCost()
-
-        //{
-
-        //}
-
+        public  double alculateTotalCost()
+        {
+            return totalNights * pricePerNight;
+        }
 
     }
-
-
-
-
-
 
 
 
@@ -252,7 +248,12 @@ namespace OOP_Part1
 
                         Room.isAvailable =false;
 
-                        Guest.displayGuest();
+                        //Console.WriteLine(" guest name:" + name);
+                        //Console.WriteLine(" room number: " + roomNumber);
+                        //Console.WriteLine( "room type: "+  room)
+
+
+
 
 
 
@@ -260,15 +261,74 @@ namespace OOP_Part1
 
                     case 4:
 
+                        bool exit1=false;
+                        while (exit1 == false)
+                        {
+                            Console.WriteLine("(1)Show all available rooms");
+                            Console.WriteLine("(2)Filter by room type");
+                            Console.WriteLine("(3)Filter by max price");
+                            Console.WriteLine("(4)Room price statistics");
+                            Console.WriteLine("(0) Back");
+                            Console.WriteLine("Enter your choose");
+                            int choose1 = int.Parse(Console.ReadLine());
+                            switch (choose1)
+                            {
+
+                                case 1:
+                                    var selectAvalableRoom = rooms.Where(r => r.isAvailable).OrderBy(r => r.pricePerNight).ToList();//Linq function where 
+
+                                    Console.WriteLine("aviable rooms" +  selectAvalableRoom.Count );
+
+                                    foreach (var item in selectAvalableRoom)
+                                    {
+
+                                        Console.WriteLine(item);
+                                    }
+
+                                    break;
+
+                                case 2:
+
+                                    //Console.WriteLine("ENTER ROOM TYPE");
+                                    //var selectRoomType = rooms.Where(r => r.isAvailable).ToList();
+
+
+                                    //foreach (Room item in selectRoomType)
+                                    //    Console.WriteLine(item);
+
+
+                                    break;
+
+                                case 3:
 
 
 
-                        Console.WriteLine("Enter your choose  ");
-                        Console.WriteLine("(1)Show all available rooms");
-                        Console.WriteLine("(2)Filter by room type");
-                        Console.WriteLine("               ");
-                        Console.WriteLine("               ");
-                        Console.WriteLine("               ");
+
+
+
+                                    break;
+
+                                case 4:
+                                    var price = rooms.Select(r => r.pricePerNight);
+                                    Console.WriteLine();
+
+
+                                    break;
+
+                                case 0:
+                                    return;
+
+                                    break;
+
+
+                            }
+
+                        }
+
+
+
+
+
 
 
                         break;
