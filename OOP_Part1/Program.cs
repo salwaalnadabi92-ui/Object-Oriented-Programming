@@ -222,18 +222,54 @@ namespace OOP_Part1
                         break;
 
                     case 3:
-                      
+
+                        Console.WriteLine(" Enter guest id");
+                        string guestId = Console.ReadLine();
+                        Console.WriteLine(" Enter room number");
+                        string roomNumber=Console.ReadLine();
+
+                        Guest   Guest = guests.FirstOrDefault(g => g.guestId == guestId);
+
+                        Room Room = rooms.FirstOrDefault(r => r.roomNumber == roomNumber);
+
+                        if(Room == null )
+
+                        {
+                           Console.WriteLine(" ROOM NOT FOUND   ");
+                            return;
+                        }
+                        if(Guest== null)
+                        {
+                            Console.WriteLine("GUEST NOT FOUND "); 
+                            return;
+                        }
+                        if(!Room.isAvailable)
+                        {
+                            Console.WriteLine(" Room is already booked ");
+                            return;
+                        }
+                       Room.roomNumber=Guest.roomNumber;
+
+                        Room.isAvailable =false;
+
+                        Guest.displayGuest();
 
 
 
-
-
-
-                        break;
+                            break;
 
                     case 4:
 
-                     
+
+
+
+                        Console.WriteLine("Enter your choose  ");
+                        Console.WriteLine("(1)Show all available rooms");
+                        Console.WriteLine("(2)Filter by room type");
+                        Console.WriteLine("               ");
+                        Console.WriteLine("               ");
+                        Console.WriteLine("               ");
+
 
                         break;
 
