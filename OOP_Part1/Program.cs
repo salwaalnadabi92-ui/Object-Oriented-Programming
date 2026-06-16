@@ -1,4 +1,6 @@
-﻿namespace OOP_Part1
+﻿using System.ComponentModel.Design;
+
+namespace OOP_Part1
 {
     class Room
     {
@@ -6,6 +8,7 @@
       public string roomType;
       public double pricePerNight;
       public bool   isAvailable;
+
 
         public  void displayRoom()
         {
@@ -20,10 +23,10 @@
 
     class Guest
     {
-         public  int     guestId;
+         public  string    guestId;
          public string  guestName;
-         public  int     roomNumber;
-         public DateTime checkInDate;
+         public  int   roomNumber;
+         public string  checkInDate;
          public  int      totalNights;
 
         public  void displayGuest()
@@ -148,32 +151,73 @@
 
                         Console.WriteLine(" Enter: room number");
                         int newNumber=int.Parse(Console.ReadLine());
-                        if (rooms.Any(r => r.roomNumber == newNumber))
-                        {
-                            Console.WriteLine("Room already exites");
+                    
 
-                        }
-                        else
-                        {
-                            Console.WriteLine(" Enter: room type (Single / Double / Suite)");
-                            string newType = Console.ReadLine();
-                            Console.WriteLine(" Enter:price per night");
-                            double newPrice = double.Parse(Console.ReadLine());
+                            if (rooms.Any(r => r.roomNumber == newNumber))
+                            {
+                                Console.WriteLine("Room already exites");
+                            }
 
-                            Room newRoom = new Room();
-                            newRoom.roomNumber = newNumber;
-                            newRoom.roomType = newType;
-                            newRoom.pricePerNight = newPrice;
-                            newRoom.isAvailable = true;
-                            rooms.Add(newRoom);
-                            Console.WriteLine("new room add successfuly");
+                            else
+                            {
 
-                        }
+
+                                Console.WriteLine(" Enter: room type (Single / Double / Suite)");
+                                string newType = Console.ReadLine();
+                                Console.WriteLine(" Enter:price per night");
+                                double newPrice = double.Parse(Console.ReadLine());
+                           
+
+
+                                Room newRoom = new Room();
+
+                                newRoom.roomNumber = newNumber;
+                                newRoom.roomType = newType;
+                                newRoom.pricePerNight = newPrice;
+                                newRoom.isAvailable = true;
+                                rooms.Add(newRoom);
+                                Console.WriteLine("New Room Add Successfuly");
+                                Console.WriteLine("Detailes About New Room  ");
+                                newRoom.displayRoom();
+                                Console.WriteLine("Total Room:" + rooms.Count);
+                            }
+                         
+
+
                         break;
 
                     case 2:
+                        Console.WriteLine("Enter  guest name ");
+                        string name =Console.ReadLine();
+                        Console.WriteLine("check in data");
+                        string chackdata=Console.ReadLine();
+                        Console.WriteLine("Number of Nights  TO Stay ");
+                        int nightnumber=int.Parse(Console.ReadLine());
+                        if(nightnumber <0)
+                        {
+                            Console.WriteLine("Please Enter Postive Number");
+                            return;
+                        }
                     
+                            string guestID = name + "G001";
+                          
 
+                        Guest newGuest = new Guest();
+                            
+                                newGuest.guestId = guestID;
+                                newGuest.guestName = name;
+                                newGuest.roomNumber = "";
+                                newGuest.checkInDate = chackdata;
+                                newGuest.totalNights = nightnumber;
+                          
+                            guests.Add(newGuest);
+                        Console.WriteLine("========================================");
+                        Console.WriteLine(" guest registerd succsssfuly ");
+                        Console.WriteLine(" ID :"+ guestID);
+                        Console.WriteLine("name: " + name);
+                        Console.WriteLine("room number :" + );
+                        Console.WriteLine(" date"+ chackdata);
+                        Console.WriteLine(" total Night"+ nightnumber);
                         break;
 
                     case 3:
