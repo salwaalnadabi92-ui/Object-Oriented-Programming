@@ -35,20 +35,21 @@
             Console.WriteLine(totalNights);
         }
 
-    }
 
-   
-
-
-
-
-
-       
         //public static void calculateTotalCost()
 
         //{
 
         //}
+
+
+    }
+
+
+
+
+
+
 
 
 
@@ -65,7 +66,54 @@
 
             List<Room> rooms = new List<Room>();
 
+            rooms.Add(new Room
+            {
+                roomNumber = 101,
+                roomType = " single",
+                pricePerNight = 150,
+                isAvailable = false,
+            });
+         
+            rooms.Add(new Room
+            {
+                roomNumber = 201,
+                roomType = "Suite ",
+                pricePerNight = 250,
+                isAvailable = true,
+            });
 
+            rooms.Add(new Room
+            {
+                roomNumber = 301,
+                roomType = "double ",
+                pricePerNight = 200,
+                isAvailable = false,
+            });
+
+            rooms.Add(new Room
+            {
+                roomNumber = 401,
+                roomType = "single ",
+                pricePerNight = 150,
+                isAvailable = true,
+            });
+
+           
+            rooms.Add(new Room
+            {
+                roomNumber = 501,
+                roomType = "double ",
+                pricePerNight = 200,
+                isAvailable = true,
+            });
+
+            rooms.Add(new Room
+            {
+                roomNumber = 601,
+                roomType = "double ",
+                pricePerNight = 200,
+                isAvailable = true,
+            });
             List<Guest> guests = new List<Guest>();
 
 
