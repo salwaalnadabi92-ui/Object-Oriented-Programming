@@ -2,33 +2,53 @@
 {
     class Room
     {
-        int roomNumber;
-        string roomType;
-        double pricePerNight;
-        bool   isAvailable;
+      public  int roomNumber;
+      public string roomType;
+      public double pricePerNight;
+      public bool   isAvailable;
 
-
+        public  void displayRoom()
+        {
+            Console.WriteLine(roomNumber);
+            Console.WriteLine(roomType);
+            Console.WriteLine(pricePerNight);
+            Console.WriteLine(isAvailable);
+        }
     }
+
+
 
     class Guest
     {
-            int     guestId;
-            string  guestName;
-            int     roomNumber;
-            DateTime checkInDate;
-            int      totalNights;
+         public  int     guestId;
+         public string  guestName;
+         public  int     roomNumber;
+         public DateTime checkInDate;
+         public  int      totalNights;
 
-
+        public  void displayGuest()
+        {
+            Console.WriteLine(guestId);
+            Console.WriteLine(guestName);
+            Console.WriteLine(roomNumber);
+            Console.WriteLine(checkInDate);
+            Console.WriteLine(totalNights);
+        }
 
     }
 
+   
 
 
 
 
 
+       
+        //public static void calculateTotalCost()
 
+        //{
 
+        //}
 
 
 
@@ -36,21 +56,9 @@
     internal class Program
 
     {
-        public static void displayRoom()
-        {
+      
 
-        }
-
-        public static void displayGuest()
-        {
-
-        }
-        public static void  calculateTotalCost()
-
-        {
-
-        }
-
+        
 
         static void Main(string[] args)
         {
