@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.Design;
+using System.Xml.Linq;
 
 namespace OOP_Part1
 {
     class Room
     {
-      public  int roomNumber;
+      public  string roomNumber;
       public string roomType;
       public double pricePerNight;
       public bool   isAvailable;
@@ -25,17 +26,18 @@ namespace OOP_Part1
     {
          public  string    guestId;
          public string  guestName;
-         public  int   roomNumber;
+         public  string   roomNumber;
          public string  checkInDate;
          public  int      totalNights;
 
         public  void displayGuest()
         {
-            Console.WriteLine(guestId);
-            Console.WriteLine(guestName);
-            Console.WriteLine(roomNumber);
-            Console.WriteLine(checkInDate);
-            Console.WriteLine(totalNights);
+            
+            Console.WriteLine(" ID :" + guestId);
+            Console.WriteLine("name: " + guestName);
+            Console.WriteLine("  room number "+ roomNumber);
+            Console.WriteLine(" date" + checkInDate);
+            Console.WriteLine(" total Night" +totalNights );
         }
 
 
@@ -71,7 +73,7 @@ namespace OOP_Part1
 
             rooms.Add(new Room
             {
-                roomNumber = 101,
+                roomNumber ="R101",
                 roomType = " single",
                 pricePerNight = 150,
                 isAvailable = false,
@@ -79,7 +81,7 @@ namespace OOP_Part1
          
             rooms.Add(new Room
             {
-                roomNumber = 201,
+                roomNumber ="201",
                 roomType = "Suite ",
                 pricePerNight = 250,
                 isAvailable = true,
@@ -87,7 +89,7 @@ namespace OOP_Part1
 
             rooms.Add(new Room
             {
-                roomNumber = 301,
+                roomNumber ="301",
                 roomType = "double ",
                 pricePerNight = 200,
                 isAvailable = false,
@@ -95,7 +97,7 @@ namespace OOP_Part1
 
             rooms.Add(new Room
             {
-                roomNumber = 401,
+                roomNumber ="401",
                 roomType = "single ",
                 pricePerNight = 150,
                 isAvailable = true,
@@ -104,7 +106,7 @@ namespace OOP_Part1
            
             rooms.Add(new Room
             {
-                roomNumber = 501,
+                roomNumber ="501",
                 roomType = "double ",
                 pricePerNight = 200,
                 isAvailable = true,
@@ -112,7 +114,7 @@ namespace OOP_Part1
 
             rooms.Add(new Room
             {
-                roomNumber = 601,
+                roomNumber ="601",
                 roomType = "double ",
                 pricePerNight = 200,
                 isAvailable = true,
@@ -150,7 +152,7 @@ namespace OOP_Part1
                     case 1:
 
                         Console.WriteLine(" Enter: room number");
-                        int newNumber=int.Parse(Console.ReadLine());
+                        string  newNumber=(Console.ReadLine());
                     
 
                             if (rooms.Any(r => r.roomNumber == newNumber))
@@ -178,6 +180,7 @@ namespace OOP_Part1
                                 rooms.Add(newRoom);
                                 Console.WriteLine("New Room Add Successfuly");
                                 Console.WriteLine("Detailes About New Room  ");
+
                                 newRoom.displayRoom();
                                 Console.WriteLine("Total Room:" + rooms.Count);
                             }
@@ -193,35 +196,38 @@ namespace OOP_Part1
                         string chackdata=Console.ReadLine();
                         Console.WriteLine("Number of Nights  TO Stay ");
                         int nightnumber=int.Parse(Console.ReadLine());
-                        if(nightnumber <0)
+                        if (nightnumber < 0)
                         {
                             Console.WriteLine("Please Enter Postive Number");
                             return;
                         }
-                    
-                            string guestID = name + "G001";
+
+                            string guestID =guests.Count()+1 +"G000";
                           
 
                         Guest newGuest = new Guest();
                             
                                 newGuest.guestId = guestID;
                                 newGuest.guestName = name;
-                                newGuest.roomNumber = "";
+                                newGuest.roomNumber = "Not Assigned";
                                 newGuest.checkInDate = chackdata;
                                 newGuest.totalNights = nightnumber;
                           
                             guests.Add(newGuest);
                         Console.WriteLine("========================================");
                         Console.WriteLine(" guest registerd succsssfuly ");
-                        Console.WriteLine(" ID :"+ guestID);
-                        Console.WriteLine("name: " + name);
-                        Console.WriteLine("room number :" + );
-                        Console.WriteLine(" date"+ chackdata);
-                        Console.WriteLine(" total Night"+ nightnumber);
+                       newGuest.displayGuest();
+                     
+
                         break;
 
                     case 3:
                       
+
+
+
+
+
 
                         break;
 
