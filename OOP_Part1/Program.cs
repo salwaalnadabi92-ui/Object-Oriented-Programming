@@ -146,7 +146,27 @@
 
                     case 1:
 
-                       
+                        Console.WriteLine(" Enter: room number");
+                        int newNumber=int.Parse(Console.ReadLine());
+                        if (rooms.Any(r => r.roomNumber == newNumber))
+                            {
+                            Console.WriteLine("Room already exites");
+                            return;
+                        }
+
+                        Console.WriteLine(" Enter: room type (Single / Double / Suite)");
+                        string newType=Console.ReadLine();
+                        Console.WriteLine(" Enter:price per night");
+                        double newPrice=double.Parse(Console.ReadLine());
+
+                        Room newRoom = new Room();
+                        newRoom.roomNumber=newNumber;
+                        newRoom.roomType = newType;
+                        newRoom.pricePerNight=newPrice;
+                        newRoom.isAvailable = true;
+                        rooms.Add(newRoom);
+                        Console.WriteLine("new room add successfuly"); 
+
 
                         break;
 
