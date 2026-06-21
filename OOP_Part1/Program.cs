@@ -7,7 +7,7 @@ namespace OOP_Part1
 {
     class Room
     {
-      public  string roomNumber;
+      public  int roomNumber;
       public string roomType;
       public double pricePerNight;
       public bool   isAvailable;
@@ -69,7 +69,7 @@ namespace OOP_Part1
 
             rooms.Add(new Room
             {
-                roomNumber ="R101",
+                roomNumber = R101
                 roomType = " single",
                 pricePerNight = 150,
                 isAvailable = false,
@@ -148,8 +148,16 @@ namespace OOP_Part1
                     case 1:
 
                         Console.WriteLine(" Enter: room number");
-                        string  newNumber=(Console.ReadLine());
-                    
+                        int  newNumber=int.Parse(Console.ReadLine());
+
+
+                        if (newNumber <= 0)
+                        {
+                            Console.WriteLine("Please Enter Postive Number");
+                            return;
+
+
+                        }
 
                             if (rooms.Any(r => r.roomNumber == newNumber))
                             {
@@ -161,10 +169,16 @@ namespace OOP_Part1
 
 
                                 Console.WriteLine(" Enter: room type (Single / Double / Suite)");
-                                string newType = Console.ReadLine();
+                               string newType = Console.ReadLine();
                                 Console.WriteLine(" Enter:price per night");
                                 double newPrice = double.Parse(Console.ReadLine());
-                           
+
+
+                            if (newPrice <= 0)
+                            {
+                                Console.WriteLine("Price must be positive.");
+                                return;
+                            }
 
 
                                 Room newRoom = new Room();
@@ -244,14 +258,21 @@ namespace OOP_Part1
                             Console.WriteLine(" Room is already booked ");
                             return;
                         }
-                       Room.roomNumber=Guest.roomNumber;
 
+
+                        Guest.roomNumber = Room.roomNumber.ToString();
+                       
                         Room.isAvailable =false;
 
-                        //Console.WriteLine(" guest name:" + name);
-                        //Console.WriteLine(" room number: " + roomNumber);
-                        //Console.WriteLine( "room type: "+  room)
 
+                        Console.WriteLine("Booking Confirmed");
+                        Console.WriteLine("Guest Name:" + Guest.guestName);
+                        Console.WriteLine("Room Number:" + Room.roomNumber);
+                        Console.WriteLine("Room Type: " + Room.roomType);
+                        Console.WriteLine("Price Per Night:" + Room.pricePerNight);
+                        Console.WriteLine("Total Nights:" + Guest.totalNights);
+
+                        Console.WriteLine("Total Cost:" + Guest.alculateTotalCost());
 
 
 
