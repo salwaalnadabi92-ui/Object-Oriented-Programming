@@ -69,15 +69,15 @@ namespace OOP_Part1
 
             rooms.Add(new Room
             {
-                roomNumber = R101
+                roomNumber = 101,
                 roomType = " single",
                 pricePerNight = 150,
                 isAvailable = false,
-            });
+            }); 
          
             rooms.Add(new Room
             {
-                roomNumber ="201",
+                roomNumber =201,
                 roomType = "Suite ",
                 pricePerNight = 250,
                 isAvailable = true,
@@ -85,7 +85,7 @@ namespace OOP_Part1
 
             rooms.Add(new Room
             {
-                roomNumber ="301",
+                roomNumber =301,
                 roomType = "double ",
                 pricePerNight = 200,
                 isAvailable = false,
@@ -93,7 +93,7 @@ namespace OOP_Part1
 
             rooms.Add(new Room
             {
-                roomNumber ="401",
+                roomNumber =401,
                 roomType = "single ",
                 pricePerNight = 150,
                 isAvailable = true,
@@ -102,7 +102,7 @@ namespace OOP_Part1
            
             rooms.Add(new Room
             {
-                roomNumber ="501",
+                roomNumber =501,
                 roomType = "double ",
                 pricePerNight = 200,
                 isAvailable = true,
@@ -110,7 +110,7 @@ namespace OOP_Part1
 
             rooms.Add(new Room
             {
-                roomNumber ="601",
+                roomNumber =601,
                 roomType = "double ",
                 pricePerNight = 200,
                 isAvailable = true,
@@ -212,7 +212,7 @@ namespace OOP_Part1
                             return;
                         }
 
-                            string guestID =guests.Count()+1 +"G000";
+                            string guestID = "G000"+guests.Count()+1 ;
                           
 
                         Guest newGuest = new Guest();
@@ -236,7 +236,7 @@ namespace OOP_Part1
                         Console.WriteLine(" Enter guest id");
                         string guestId = Console.ReadLine();
                         Console.WriteLine(" Enter room number");
-                        string roomNumber=Console.ReadLine();
+                        int roomNumber=int.Parse(Console.ReadLine());
 
                         Guest   Guest = guests.FirstOrDefault(g => g.guestId == guestId);
 
@@ -304,7 +304,7 @@ namespace OOP_Part1
                                     foreach (var room in AvalableRoom)
                                     {
 
-                                        Console.WriteLine(room.roomNumber, room.roomType, room.pricePerNight);
+                                        Console.WriteLine("{ room.roomNumber}{ room.roomType} { room.pricePerNight}");
 
                                     }
                                         break;
@@ -315,7 +315,7 @@ namespace OOP_Part1
                                     Console.WriteLine("ENTER ROOM TYPE");
                                     string roomType = Console.ReadLine();
 
-                                    var serchRoomType = rooms.Where(r => r.RoomType.Contains(roomType)).ToList();
+                                    var serchRoomType = rooms.Where(r => r.roomType.Contains(roomType)).ToList();
 
                                     Console.WriteLine(" rooms found :" + serchRoomType.Count);
 
