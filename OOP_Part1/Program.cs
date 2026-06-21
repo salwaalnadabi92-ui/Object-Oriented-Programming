@@ -271,7 +271,6 @@ namespace OOP_Part1
                         Console.WriteLine("Room Type: " + Room.roomType);
                         Console.WriteLine("Price Per Night:" + Room.pricePerNight);
                         Console.WriteLine("Total Nights:" + Guest.totalNights);
-
                         Console.WriteLine("Total Cost:" + Guest.alculateTotalCost());
 
 
@@ -296,42 +295,74 @@ namespace OOP_Part1
                             {
 
                                 case 1:
-                                    var selectAvalableRoom = rooms.Where(r => r.isAvailable).OrderBy(r => r.pricePerNight).ToList();//Linq function where 
 
-                                    Console.WriteLine("aviable rooms" +  selectAvalableRoom.Count );
+                                    var AvalableRoom = rooms.Where(r => r.isAvailable)
+                                        .OrderBy(r => r.pricePerNight).ToList();//Linq function where
 
-                                    foreach (var item in selectAvalableRoom)
+                                    Console.WriteLine("aviable rooms" + AvalableRoom.Count);
+
+                                    foreach (var room in AvalableRoom)
                                     {
 
-                                        Console.WriteLine(item);
-                                    }
+                                        Console.WriteLine(room.roomNumber, room.roomType, room.pricePerNight);
 
-                                    break;
+                                    }
+                                        break;
 
                                 case 2:
 
-                                    //Console.WriteLine("ENTER ROOM TYPE");
-                                    //var selectRoomType = rooms.Where(r => r.isAvailable).ToList();
 
+                                    Console.WriteLine("ENTER ROOM TYPE");
+                                    string roomType = Console.ReadLine();
 
-                                    //foreach (Room item in selectRoomType)
-                                    //    Console.WriteLine(item);
+                                    var serchRoomType = rooms.Where(r => r.RoomType.Contains(roomType)).ToList();
 
+                                    Console.WriteLine(" rooms found :" + serchRoomType.Count);
 
-                                    break;
+                                    foreach (Room room in serchRoomType)
+                                    {
+                                        Console.WriteLine(room.roomNumber, room.roomType, room.pricePerNight, room.isAvailable);
+
+                                    }
+
+                                        break;
 
                                 case 3:
 
 
+                                    Console.WriteLine(" enter the price");
+                                    double maxPrice = double.Parse(Console.ReadLine());
+
+                                    var priceRooms = rooms.Where(r => r.isAvailable &&
+
+                                    r.pricePerNight <= maxPrice)
+                                   .OrderBy(r => r.pricePerNight)
+                                    .ToList();
+
+                                    Console.WriteLine("Total Rooms Found:" + priceRooms.Count);
+
+                                    foreach (var room in priceRooms)
+                                    {
+                                        room.displayRoom();
 
 
+                                    }
 
 
-                                    break;
+                                        break;
 
                                 case 4:
-                                    var price = rooms.Select(r => r.pricePerNight);
-                                    Console.WriteLine();
+
+
+                                    Console.WriteLine("Total Rooms:" + rooms.Count());
+
+                                    Console.WriteLine("Available Rooms:" + rooms.Count(r => r.isAvailable));
+
+                                    Console.WriteLine("Average Price: " + rooms.Average(r => r.pricePerNight));
+
+                                    Console.WriteLine("Cheapest Price: " + rooms.Min(r => r.pricePerNight));
+
+                                    Console.WriteLine("Expensive Price: " + rooms.Max(r => r.pricePerNight));
 
 
                                     break;
